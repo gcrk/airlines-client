@@ -1,11 +1,10 @@
-import FlightSearch from './FlightSearch';
+import Airline from './Airline';
 import '../App.css'
 
 function App() {
   return (
     <div className="App container">
-      Flight Booking App
-      <FlightSearch />
+
     </div>
   );
 }
