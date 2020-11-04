@@ -1,11 +1,9 @@
-import React , {Component}from 'react';
-class Seat extends Component {
-  render(){
-    return(
-     <h4>List of available seats</h4>
-    )
-  }
-
+import React, {Component} from 'react';
+function Seat(props) {
+  return (
+    <button >
+      X
+    </button>
+  );
 }
-
 export default Seat;
