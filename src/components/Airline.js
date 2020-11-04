@@ -8,7 +8,8 @@ class Airline extends Component {
     this.state = {
       seats : Array(36).fill(null),
       flights: [{destination: 'sydney', origin: 'melbourne'}, {destination: 'melbourne'}],
-      searchTerm: ''
+      searchTerm: '',
+      foundFlights: []
     };
     this.searchFlight = this.searchFlight.bind(this)
   }
@@ -21,15 +22,21 @@ class Airline extends Component {
   );
 }
 
+
   searchFlight(query) {
     this.setState({searchTerm: query})
-    console.log(this.state.searchTerm)
+    this.setState({foundFlights: []})
+
+    let foundFlights = []
 
     this.state.flights.map(function(flight) {
       if (flight.destination == query) {
-        console.log(flight)
+        foundFlights.push(flight)
+        console.log(foundFlights)
       }
     })
+
+    this.setState({foundFlights: foundFlights})
   }
 
 
@@ -37,6 +44,11 @@ class Airline extends Component {
     return(
       <div className="form-container">
         <FlightSearch onSubmit={this.searchFlight}/>
+        <div>
+        <ul>
+          {this.state.foundFlights.map((flight) => (<li>Destination: {flight.destination} Origin:{flight.origin}</li>))}
+        </ul>
+        </div>
       <div>
 
            <div className="board-row">
