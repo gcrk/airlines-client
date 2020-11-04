@@ -1,9 +1,16 @@
 import React, {Component} from 'react';
-function Seat(props) {
+
+const _handleClick = (e) => {
+  console.log(e)
+}
+
+const Seat = (props) => {
   return (
-    <button >
+    <button onClick={_handleClick} className="button">
       X
     </button>
-  );
+  )
 }
+
+
 export default Seat;

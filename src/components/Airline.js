@@ -9,18 +9,20 @@ class Airline extends Component {
       seats : Array(36).fill(null),
       flights: [{destination: 'sydney', origin: 'melbourne'}, {destination: 'melbourne'}],
       searchTerm: '',
-      foundFlights: []
+      foundFlights: [],
+      occupiedSeats: 0
     };
     this.searchFlight = this.searchFlight.bind(this)
   }
-  handleClick(i) {
-    console.log(i);
-}
+
   fetchSeats(flightName){
-alert('1');
+console.log('1')
   }
 
+// What happens when a seat is clicked - fires off _handleClick() from Seat.js
+handleClick(e) {
 
+}
   renderSeat(i) {
   return (
     <Seat
@@ -30,7 +32,7 @@ alert('1');
   );
 }
 
-
+// What happens when search flight is clicked
   searchFlight(query) {
     this.setState({searchTerm: query})
     this.setState({foundFlights: []})
@@ -105,6 +107,7 @@ alert('1');
         {this.renderSeat(35)}
       </div>
          </div>
+         </div>
 
 
       </div>
@@ -112,6 +115,7 @@ alert('1');
   }
 
 }
+
 
 
 export default Airline;
