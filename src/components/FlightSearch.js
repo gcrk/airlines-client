@@ -22,12 +22,10 @@ class FlightSearch extends Component {
   }
   render () {
     return (
-      <div className="form-container">
         <form onSubmit={this._handleSubmit}>
           <input className="input-field" type="search" placeholder="destination" onInput={this._handleInput}/>
           <input type="submit" value="search"/>
         </form>
-      </div>
     )
   }
 }
