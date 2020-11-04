@@ -13,11 +13,19 @@ class Airline extends Component {
     };
     this.searchFlight = this.searchFlight.bind(this)
   }
+  handleClick(i) {
+    console.log(i);
+}
+  fetchSeats(flightName){
+alert('1');
+  }
+
+
   renderSeat(i) {
   return (
     <Seat
       value={this.state.seats[i]}
-
+      onClick={() => this.handleClick(i)}
     />
   );
 }
@@ -51,7 +59,8 @@ class Airline extends Component {
         </div>
       <div>
 
-           <div className="board-row">
+        <div>
+        <div className="board-row">
         {this.renderSeat(0)}
         {this.renderSeat(1)}
         {this.renderSeat(2)}
