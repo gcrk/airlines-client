@@ -7,8 +7,10 @@ class Airline extends Component {
     super();
     this.state = {
       seats : Array(36).fill(null),
-      flights: [{id: 1, origin: "sydney"}, {id: 1, origin: "melbourne"}]
+      flights: [{destination: 'sydney'}, {destination: 'melbourne'}],
+      searchTerm: ''
     };
+    this.searchFlight = this.searchFlight.bind(this)
   }
   renderSeat(i) {
   return (
@@ -19,9 +21,15 @@ class Airline extends Component {
   );
 }
 
-  searchFlight(flights) {
-    console.log(flights);
+  searchFlight(query) {
+    let searchFlightDestination = query
+    console.log(searchFlightDestination)
+    console.log(this.state.flights)
+    this.setState({searchTerm: query})
+
   }
+
+
   render() {
     return(
       <div className="form-container">
