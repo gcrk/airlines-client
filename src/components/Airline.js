@@ -24,12 +24,12 @@ class Airline extends Component {
   searchFlight(query) {
     this.setState({searchTerm: query})
     console.log(this.state.searchTerm)
-    this.state.flights.map(function(flight) {
-    if (flight.destination == query) {
-      console.log(flight)
-    }
-    })
 
+    this.state.flights.map(function(flight) {
+      if (flight.destination == query) {
+        console.log(flight)
+      }
+    })
   }
 
 
