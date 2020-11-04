@@ -2,10 +2,12 @@ import React, { Component } from 'react'
 import FlightSearch from './FlightSearch'
 import Seat from './Seat'
 class Airline extends Component {
+
   constructor(){
     super();
     this.state = {
-      seats : Array(36).fill(null)
+      seats : Array(36).fill(null),
+      flights: [{id: 1, origin: "sydney"}, {id: 1, origin: "melbourne"}]
     };
   }
   renderSeat(i) {
@@ -16,12 +18,15 @@ class Airline extends Component {
     />
   );
 }
+
+  searchFlight(flights) {
+    console.log(flights);
+  }
   render() {
     return(
       <div className="form-container">
-       <FlightSearch/>
-
-         <div>
+        <FlightSearch onSubmit={this.searchFlight}/>
+      <div>
 
            <div className="board-row">
         {this.renderSeat(0)}
@@ -75,5 +80,6 @@ class Airline extends Component {
   }
 
 }
+
 
 export default Airline;
