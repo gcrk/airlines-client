@@ -2,11 +2,15 @@ import React, { Component } from 'react'
 import FlightSearch from './FlightSearch'
 import Seat from './Seat'
 class Airline extends Component {
+
   constructor(){
     super();
     this.state = {
-      seats : Array(36).fill(null)
+      seats : Array(36).fill(null),
+      flights: [{destination: 'sydney'}, {destination: 'melbourne'}],
+      searchTerm: ''
     };
+    this.searchFlight = this.searchFlight.bind(this)
   }
   handleClick(i) {
     console.log(i);
@@ -24,10 +28,20 @@ alert('1');
     />
   );
 }
+
+  searchFlight(query) {
+    let searchFlightDestination = query
+    console.log(searchFlightDestination)
+    console.log(this.state.flights)
+    this.setState({searchTerm: query})
+
+  }
+
+
   render() {
     return(
       <div className="form-container">
-       <FlightSearch onSubmit={this.fetchSeats} />
+        <FlightSearch onSubmit={this.searchFlight}/>
 
         <div>
         <div className="board-row">
@@ -82,5 +96,6 @@ alert('1');
   }
 
 }
+
 
 export default Airline;

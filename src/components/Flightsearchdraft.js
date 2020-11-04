@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../App.css'
 
-class FlightSearch extends Component {
+class Flightsearchdraft extends Component {
   constructor() {
     super();
     this.state = {
@@ -20,8 +20,8 @@ class FlightSearch extends Component {
 
   _handleSubmit(event) {
     event.preventDefault();
-    console.log('_handleSubmit', event);
-        this.setState({query: event.target.value})
+    console.log('_handleSubmit', event.target.tagName);
+      // this.setState({query: event.target.value})
     // this.props.onSubmit( this.state.query ); - this line is to pass this.state.query into props, not used until called in parent component
 
   }
@@ -38,13 +38,11 @@ class FlightSearch extends Component {
     }
     return (
       <div>
-        <form onSubmit={this._handleSubmit} className="dd-wrapper">
         <div className="dd-header">
-          <input className="input-field dd-header" type="search" value={this.state.query}placeholder="destination" onClick={this._toggleDropDown}/>
+          <input className="input-field dd-header" type="search" value={this.state.query} onChange={this._handleSubmit}  placeholder="destination" onClick={this._toggleDropDown}/>
           {toggleDropDown}
           <input type="submit" value="search"/>
-          </div>
-        </form>
+          </div> 
         </div>
 
     )
@@ -54,19 +52,16 @@ class FlightSearch extends Component {
 class SubMenu extends Component {
   render(){
     return(
-      <ul className="dd-list">
-        <li className="dd-list-item" value="SYD" onClick={this._handleInput}>
-          <button onClick={this._handleSubmit}>Sydney AU</button>
-        </li>
-        <li className="dd-list-item">
-          <button  value="MEL" onInput={this._handleInput}>Melbourne AU</button>
-        </li>
-        <li className="dd-list-item">
-          <button value="ADL" onInput={this._handleInput}>Adelaide AU</button>
-        </li>
-    </ul>
+      <div className="dd-list">
+
+          <button value="SYD" onClick={this._handleSubmit}>Sydney AU</button>
+
+          <button  value="MEL" onChange={this._handleInput}>Melbourne AU</button>
+
+          <button value="ADL" onChange={this._handleInput}>Adelaide AU</button>
+      </div>
     )
   }
 }
 // button onClick update state.query to value
-export default FlightSearch;
+export default Flightsearchdraft;

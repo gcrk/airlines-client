@@ -8,7 +8,7 @@ class FlightSearch extends Component {
       query: ''
     }
     this._handleInput = this._handleInput.bind(this)
-    // this._handleSubmit = this._handleSubmit.bind(this)
+    this._handleSubmit = this._handleSubmit.bind(this)
   }
   _handleInput(event) {
     this.setState({query: event.target.value})
@@ -17,7 +17,7 @@ class FlightSearch extends Component {
   _handleSubmit(event) {
     event.preventDefault();
     console.log('_handleSubmit', event);
-    // this.props.onSubmit( this.state.query ); - this line is to pass this.state.query into props, not used until called in parent component
+    this.props.onSubmit( this.state.query ); // - this line is to pass this.state.query into props, not used until called in parent component
 
   }
   render () {
