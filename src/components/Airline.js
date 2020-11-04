@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import axios from 'axios'
+import React, { Component } from 'react';
+import axios from 'axios';
 
 import FlightSearch from './FlightSearch'
 import Seat from './Seat'
@@ -11,7 +11,7 @@ class Airline extends Component {
     super();
     this.state = {
       seats : Array(36).fill(null),
-      flights: [{destination: 'sydney', origin: 'melbourne'}, {destination: 'melbourne'}],
+      flights: [],
       searchTerm: '',
       foundFlights: [],
       occupiedSeats: 0
@@ -42,6 +42,7 @@ handleClick(e) {
   searchFlight(query) {
     axios.get('http://localhost:3000/flights.json').then((results) => {
       this.setState({flights: results.data});
+      console.log(this.state.flights[0].destination)
     });
     this.setState({searchTerm: query})
     this.setState({foundFlights: []})
@@ -53,6 +54,7 @@ handleClick(e) {
         foundFlights.push(flight)
         console.log(foundFlights)
       }
+       console.log(foundFlights)
     })
 
     this.setState({foundFlights: foundFlights})
