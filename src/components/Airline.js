@@ -1,7 +1,11 @@
 import React, { Component } from 'react'
+import axios from 'axios'
+
 import FlightSearch from './FlightSearch'
 import Seat from './Seat'
 class Airline extends Component {
+
+// const SERVER_URL = 'http://localhost:3000/flights.json';
 
   constructor(){
     super();
@@ -13,10 +17,12 @@ class Airline extends Component {
       occupiedSeats: 0
     };
     this.searchFlight = this.searchFlight.bind(this)
+
+
   }
 
   fetchSeats(flightName){
-console.log('1')
+    console.log('1')
   }
 
 // What happens when a seat is clicked - fires off _handleClick() from Seat.js
@@ -34,6 +40,9 @@ handleClick(e) {
 
 // What happens when search flight is clicked
   searchFlight(query) {
+    axios.get('http://localhost:3000/flights.json').then((results) => {
+      this.setState({flights: results.data});
+    });
     this.setState({searchTerm: query})
     this.setState({foundFlights: []})
 
