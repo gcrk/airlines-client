@@ -3,12 +3,15 @@
 }
 
 .form-container {
+  display: flex;
+  justify-content: center;
   box-sizing: border-box;
   margin-top: 50px;
   display: block;
   padding: 50px;
   max-width: 500px;
-  border-radius: 1.25rem;
+  border-radius: 0.5rem;
+  background-color: pink;
 }
 
 .input-field {

@@ -4,8 +4,9 @@ import FlightSearch from './FlightSearch'
 class Airline extends Component {
   render() {
     return(
-
-      <FlightSearch />
+        <div className="form-container">
+          <FlightSearch />
+        </div>
     )
   }
 
