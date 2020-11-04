@@ -42,22 +42,23 @@ handleClick(e) {
   searchFlight(query) {
     axios.get('http://localhost:3000/flights.json').then((results) => {
       this.setState({flights: results.data});
-      console.log(this.state.flights[0].destination)
-    });
+    }).then((results) => {
+
+      let foundFlights = []
+
+      this.state.flights.map(function(flight) {
+
+        if (flight.destination == query) {
+          foundFlights.push(flight)
+        }
+      })
+      this.setState({foundFlights: foundFlights})
+    })
     this.setState({searchTerm: query})
     this.setState({foundFlights: []})
 
-    let foundFlights = []
 
-    this.state.flights.map(function(flight) {
-      if (flight.destination == query) {
-        foundFlights.push(flight)
-        console.log(foundFlights)
-      }
-       console.log(foundFlights)
-    })
 
-    this.setState({foundFlights: foundFlights})
   }
 
 
@@ -67,7 +68,7 @@ handleClick(e) {
         <FlightSearch onSubmit={this.searchFlight}/>
         <div>
         <ul>
-          {this.state.foundFlights.map((flight) => (<li>Destination: {flight.destination} Origin:{flight.origin}</li>))}
+          {this.state.foundFlights.map((flight) => (<li key={flight.flight_number}><strong>Flight Number: </strong>{flight.flight_number} <strong>Destination: </strong>{flight.destination} <strong>Origin: </strong>{flight.origin}</li>))}
         </ul>
         </div>
       <div>
