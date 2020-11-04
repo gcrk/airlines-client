@@ -6,6 +6,9 @@
   box-sizing: border-box;
   margin-top: 50px;
   display: block;
+  padding: 50px;
+  max-width: 500px;
+  border-radius: 1.25rem;
 }
 
 .input-field {
@@ -29,6 +32,7 @@ button {
 .container {
   max-width: 960px;
   margin: 0 auto;
+  background-color: lightblue;
 }
 .App-logo {
   height: 40vmin;
