@@ -19,7 +19,7 @@ class Airline extends Component {
   render() {
     return(
       <div className="form-container">
-       <FlightSearch />
+       <FlightSearch/>
 
          <div>
 
