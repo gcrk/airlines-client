@@ -1,12 +1,10 @@
-import React, {Component} from 'react';
-import FlightSearch from './FlightSearch';
+import React from 'react';
 
 class Airline extends Component {
-  render() {
+  render() 
   return(
     <FlightSearch />
   )
-}
 }
 
 export default Airline;
