@@ -7,7 +7,7 @@ class Airline extends Component {
     super();
     this.state = {
       seats : Array(36).fill(null),
-      flights: [{destination: 'sydney'}, {destination: 'melbourne'}],
+      flights: [{destination: 'sydney', origin: 'melbourne'}, {destination: 'melbourne'}],
       searchTerm: ''
     };
     this.searchFlight = this.searchFlight.bind(this)
@@ -22,10 +22,13 @@ class Airline extends Component {
 }
 
   searchFlight(query) {
-    let searchFlightDestination = query
-    console.log(searchFlightDestination)
-    console.log(this.state.flights)
     this.setState({searchTerm: query})
+    console.log(this.state.searchTerm)
+    this.state.flights.map(function(flight) {
+    if (flight.destination == query) {
+      console.log(flight)
+    }
+    })
 
   }
 
