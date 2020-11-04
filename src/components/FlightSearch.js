@@ -25,6 +25,7 @@ class FlightSearch extends Component {
         <form onSubmit={this._handleSubmit}>
           <input className="input-field" type="search" placeholder="destination" onInput={this._handleInput}/>
           <input type="submit" value="search"/>
+
         </form>
     )
   }

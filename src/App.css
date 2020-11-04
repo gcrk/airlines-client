@@ -1,6 +1,9 @@
 .App {
   text-align: center;
 }
+/* .nav__submenu {
+  display: none;
+} */
 
 .form-container {
   display: flex;
@@ -12,11 +15,6 @@
   max-width: 500px;
   border-radius: 0.5rem;
   background-color: pink;
-}
-
-.input-field {
-  display: inline-block;
-  border: 1px solid #ced4da;
 }
 
 input {
@@ -47,7 +45,6 @@ button {
     animation: App-logo-spin infinite 20s linear;
   }
 }
-
 .App-header {
   background-color: #282c34;
   min-height: 100vh;
@@ -58,7 +55,6 @@ button {
   font-size: calc(10px + 2vmin);
   color: white;
 }
-
 .App-link {
   color: #61dafb;
 }
@@ -70,4 +66,26 @@ button {
   to {
     transform: rotate(360deg);
   }
+}
+
+/* Drop Down Menu */
+.dd-wrapper {
+  width: 100%;
+  margin-top: 8px;
+}
+.dd-header {
+  height: 40px;
+  background-color: #E2E8F2;
+  background-repeat: no-repeat;
+  background-position: 95% 50%;
+}
+
+.dd-list{
+  list-style-type: none;
+  background-color: white;
+  position: absolute;
+}
+
+.dd-list li {
+  height: 40px;
 }
