@@ -56,6 +56,7 @@ handleClick(e) {
     })
     this.setState({searchTerm: query})
     this.setState({foundFlights: []})
+    console.log(this.state.foundFlights.reservations)
 
 
 
@@ -63,8 +64,12 @@ handleClick(e) {
 
 _foundFlightButton(e) {
   console.log('clicked')
-  // this.setState({reservations: })
-  console.log(this.state.foundFlights)
+  let reservedSeats = []
+  this.state.foundFlights[0].reservations.map((seat) =>  {
+    reservedSeats.push(seat.seat)
+  })
+  this.setState({reservations: reservedSeats})
+
 }
 
   render() {
@@ -73,7 +78,7 @@ _foundFlightButton(e) {
         <FlightSearch onSubmit={this.searchFlight}/>
         <div>
         <ul>
-          {this.state.foundFlights.map((flight) => (<li key={flight.flight_number}><strong> {flight} Flight Number: </strong>{flight.flight_number} <strong>Destination: </strong>{flight.destination} <strong>Origin: </strong>{flight.origin} <button onClick={this._foundFlightButton}>Select</button></li> ))}
+          {this.state.foundFlights.map((flight) => (<li key={flight.flight_number}><strong> {flight[1]} Flight Number: </strong>{flight.flight_number} <strong>Destination: </strong>{flight.destination} <strong>Origin: </strong>{flight.origin} <button onClick={this._foundFlightButton}>Select</button></li> ))}
         </ul>
         </div>
       <div>
