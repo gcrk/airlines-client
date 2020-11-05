@@ -14,15 +14,15 @@ class Airline extends Component {
       flights: [],
       searchTerm: '',
       foundFlights: [],
-      occupiedSeats: 0
+      reservations: []
     };
     this.searchFlight = this.searchFlight.bind(this)
+    this._foundFlightButton = this._foundFlightButton.bind(this)
 
 
   }
 
   fetchSeats(flightName){
-    console.log('1')
   }
 
 // What happens when a seat is clicked - fires off _handleClick() from Seat.js
@@ -47,7 +47,7 @@ handleClick(e) {
       let foundFlights = []
 
       this.state.flights.map(function(flight) {
-
+        console.log(flight.reservations)
         if (flight.destination == query) {
           foundFlights.push(flight)
         }
@@ -61,6 +61,11 @@ handleClick(e) {
 
   }
 
+_foundFlightButton(e) {
+  console.log('clicked')
+  // this.setState({reservations: })
+  console.log(this.state.foundFlights)
+}
 
   render() {
     return(
@@ -68,7 +73,7 @@ handleClick(e) {
         <FlightSearch onSubmit={this.searchFlight}/>
         <div>
         <ul>
-          {this.state.foundFlights.map((flight) => (<li key={flight.flight_number}><strong>Flight Number: </strong>{flight.flight_number} <strong>Destination: </strong>{flight.destination} <strong>Origin: </strong>{flight.origin}</li>))}
+          {this.state.foundFlights.map((flight) => (<li key={flight.flight_number}><strong> {flight} Flight Number: </strong>{flight.flight_number} <strong>Destination: </strong>{flight.destination} <strong>Origin: </strong>{flight.origin} <button onClick={this._foundFlightButton}>Select</button></li> ))}
         </ul>
         </div>
       <div>

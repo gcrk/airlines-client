@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 
 const _handleClick = (e) => {
-  console.log(e)
+  console.log(e.target.value)
 }
 
 const Seat = (props) => {
