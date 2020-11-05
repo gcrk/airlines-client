@@ -14,10 +14,13 @@ class Airline extends Component {
       flights: [],
       searchTerm: '',
       foundFlights: [],
-      reservations: []
+      reservations: [],
+      occupiedSeats: 0,
     };
     this.searchFlight = this.searchFlight.bind(this)
     this._foundFlightButton = this._foundFlightButton.bind(this)
+    this.handleClick = this.handleClick.bind(this)
+
 
 
   }
@@ -26,16 +29,14 @@ class Airline extends Component {
   }
 
 // What happens when a seat is clicked - fires off _handleClick() from Seat.js
-handleClick(e) {
+handleClick(seat) {
+  let occupiedSeats = 0
+  occupiedSeats = parseInt(seat)
+  // this.setState({occupiedSeats: occupiedSeats})
+  console.log(seat, "seat")
+  this.setState({reservations: [...this.state.reservations, occupiedSeats]})
 
-}
-  renderSeat(i) {
-  return (
-    <Seat
-      value={this.state.seats[i]}
-      onClick={() => this.handleClick(i)}
-    />
-  );
+
 }
 
 // What happens when search flight is clicked
@@ -62,15 +63,14 @@ handleClick(e) {
 
   }
 
-_foundFlightButton(e) {
-  console.log('clicked')
-  let reservedSeats = []
-  this.state.foundFlights[0].reservations.map((seat) =>  {
-    reservedSeats.push(seat.seat)
-  })
-  this.setState({reservations: reservedSeats})
-
-}
+  _foundFlightButton = value => () => {
+    console.log('clicked')
+    let reservedSeats = []
+    value.map((seat) =>  {
+      reservedSeats.push(seat.seat)
+    })
+    this.setState({reservations: reservedSeats})
+  }
 
   render() {
     return(
@@ -78,61 +78,14 @@ _foundFlightButton(e) {
         <FlightSearch onSubmit={this.searchFlight}/>
         <div>
         <ul>
-          {this.state.foundFlights.map((flight) => (<li key={flight.flight_number}><strong> {flight[1]} Flight Number: </strong>{flight.flight_number} <strong>Destination: </strong>{flight.destination} <strong>Origin: </strong>{flight.origin} <button onClick={this._foundFlightButton}>Select</button></li> ))}
+          {this.state.foundFlights.map((flight) => (<li key={flight.flight_number}><strong> {flight[1]} Flight Number: </strong>{flight.flight_number} <strong>Destination: </strong>{flight.destination} <strong>Origin: </strong>{flight.origin} <button onClick={this._foundFlightButton(flight.reservations)}>Select</button></li> ))}
         </ul>
         </div>
-      <div>
-
-        <div>
         <div className="board-row">
-        {this.renderSeat(0)}
-        {this.renderSeat(1)}
-        {this.renderSeat(2)}
-        {this.renderSeat(3)}
-        {this.renderSeat(4)}
-        {this.renderSeat(5)}
-        {this.renderSeat(6)}
-        {this.renderSeat(7)}
-        {this.renderSeat(8)}
-      </div>
-      <div className="board-row">
-        {this.renderSeat(9)}
-        {this.renderSeat(10)}
-        {this.renderSeat(11)}
-        {this.renderSeat(12)}
-        {this.renderSeat(13)}
-        {this.renderSeat(14)}
-        {this.renderSeat(15)}
-        {this.renderSeat(16)}
-        {this.renderSeat(17)}
-      </div>
-      <div className="board-row">
-        {this.renderSeat(18)}
-        {this.renderSeat(19)}
-        {this.renderSeat(20)}
-        {this.renderSeat(21)}
-        {this.renderSeat(22)}
-        {this.renderSeat(23)}
-        {this.renderSeat(24)}
-        {this.renderSeat(25)}
-        {this.renderSeat(26)}
-      </div>
-      <div className="board-row">
-        {this.renderSeat(27)}
-        {this.renderSeat(28)}
-        {this.renderSeat(29)}
-        {this.renderSeat(30)}
-        {this.renderSeat(31)}
-        {this.renderSeat(32)}
-        {this.renderSeat(33)}
-        {this.renderSeat(34)}
-        {this.renderSeat(35)}
-      </div>
+        <Seat onClick={this.handleClick}/>
          </div>
          </div>
 
-
-      </div>
     )
   }
 
